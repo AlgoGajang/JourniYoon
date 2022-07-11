@@ -11,6 +11,6 @@ function solution(progresses, speeds) {
 			group.push([deadline]);
 		}
 	}
-	// 배포 묶음의 길이를 반환한다.
+	// 배포 묶음의 길이를 반환한다. test
 	return group.map((result) => result.length);
 }
