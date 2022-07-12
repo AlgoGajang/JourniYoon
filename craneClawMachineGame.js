@@ -37,3 +37,4 @@ function solution(board, moves) {
  * 빈 칸이면 아무 일도 일어나지 않는다.=> return 으로 작성해 그 즉시 for문이 종료됐다. => 삭제로 해결
  * 원하는 조건을 만족하면 for 반복문을 그만 돌고싶다. => break
  */
+// indent change
