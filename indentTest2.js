@@ -1,18 +1,17 @@
-function solution() {
-	for (let i = 0, j = 0; i < 10; i++) {
-		console.log(i, j);
+// 풀이 1
+function solution(nums) {
+	let answer = 0;
+	let setArray = [...new Set(nums)];
+	if (nums.length / 2 <= setArray.length) {
+		answer = nums.length / 2;
+	} else {
+		answer = setArray.length;
 	}
+	return answer;
 }
-function solution() {
-	for (let i = 0, j = 0; i < 10; i++) {
-		console.log(i, j);
-	}
-}
-function solution() {
-	let array = new Array();
-	array.fill(0, 0, 5);
-	array.forEach((el) => console.log(el + 1));
-}
-if (array.length > 10) {
-	console.log(true);
+
+// 풀이 2
+function solution(nums) {
+	let setArray = [...new Set(nums)];
+	return nums.length / 2 > setArray.length ? setArray.length : nums.length / 2;
 }
