@@ -1,16 +1,28 @@
 function solution(numbers, hand) {
   var answer = "";
-  // 각 키패드에서 가운데 키패드[2,5,8,0]까지의 거리
-  // [0,1,2,3,4,5,6,7,8,9,*,#]이다.
-  const move = {
-    2: [3, 1, 0, 1, 2, 1, 2, 3, 2, 3, 4, 4],
-    5: [2, 2, 1, 2, 1, 0, 1, 2, 1, 2, 3, 3],
-    8: [1, 3, 2, 3, 2, 1, 2, 1, 0, 1, 2, 2],
-    0: [0, 4, 3, 4, 3, 2, 3, 2, 1, 2, 1, 1],
-  };
-  let left = 10,
-    right = 11; // 손가락 포인터
 
+  const keypad = [
+    [1, 2, 3],
+    [4, 5, 6],
+    [7, 8, 9],
+    ["*", 0, "#"],
+  ];
+  let left = "*";
+  let right = "#";
+
+  // 현재지점(x1, y1)에서 목표지점(x2, y2)까지의 거리를 구한다.
+  const getDistance = function (from, to) {
+    const [x1, y1] = convertKeypad[from];
+    const [x2, y2] = convertKeypad[to];
+    return Math.abs(x1 - x2) + Math.abs(y1 - y2);
+  };
+  // keypad를 좌표로 변환한다.
+  const convertKeypad = keypad.reduce((acc, prev, x) => {
+    prev.forEach((number, y) => {
+      acc[number] = [x, y];
+    });
+    return acc;
+  }, {});
   for (let i = 0; i < numbers.length; i++) {
     if (numbers[i] === 1 || numbers[i] === 4 || numbers[i] === 7) {
       left = numbers[i];
@@ -26,8 +38,8 @@ function solution(numbers, hand) {
       numbers[i] === 8 ||
       numbers[i] === 0
     ) {
-      const leftMove = move[numbers[i]][left];
-      const rightMove = move[numbers[i]][right];
+      const leftMove = getDistance(left, numbers[i]);
+      const rightMove = getDistance(right, numbers[i]);
       if (leftMove < rightMove || (leftMove === rightMove && hand === "left")) {
         left = numbers[i];
         answer += "L";
