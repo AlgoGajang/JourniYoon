@@ -24,20 +24,15 @@ function solution(numbers, hand) {
     return acc;
   }, {});
   for (let i = 0; i < numbers.length; i++) {
-    if (numbers[i] === 1 || numbers[i] === 4 || numbers[i] === 7) {
+    if (numbers[i] % 3 === 1) {
       left = numbers[i];
       answer += "L";
     }
-    if (numbers[i] === 3 || numbers[i] === 6 || numbers[i] === 9) {
+    if (numbers[i] !== 0 && numbers[i] % 3 === 0) {
       right = numbers[i];
       answer += "R";
     }
-    if (
-      numbers[i] === 2 ||
-      numbers[i] === 5 ||
-      numbers[i] === 8 ||
-      numbers[i] === 0
-    ) {
+    if (numbers[i] % 3 === 2 || numbers[i] === 0) {
       const leftMove = getDistance(left, numbers[i]);
       const rightMove = getDistance(right, numbers[i]);
       if (leftMove < rightMove || (leftMove === rightMove && hand === "left")) {
