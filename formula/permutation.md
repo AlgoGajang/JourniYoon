@@ -6,17 +6,25 @@
 # :sparkles: 순열 알고리즘 구현 (JavaScript)
 
 ```javascript
-function Permutations(array, k) {
-	let results = [];
-	if (k === 1) return array.map((value) => [value]); // 1개 선택 시, 각각의 값을 배열에 담아 반환
-	array.map((fixed, index, origin) => {
-		const rest = [...origin.slice(0, index), ...origin.slice(index + 1)]; // 고정값(fixed)을 제외한 나머지 값의 배열
-		const permutations = Permutations(rest, k - 1); // 나머지 값(rest)의 순열을 구한다.
-		const attached = permutations.map((permutation) => [fixed, ...permutation]); // 나머지에 대한 순열과 고정값(fixed)을 합쳐 만든다.
-		results.push(...attached);
-	});
-	return results;
-}
+const permutator = (inputArr) => {
+  let result = [];
+
+  const permute = (arr, m = []) => {
+    if (arr.length === 0) {
+      result.push(m);
+    } else {
+      for (let i = 0; i < arr.length; i++) {
+        let curr = arr.slice();
+        let next = curr.splice(i, 1);
+        permute(curr.slice(), m.concat(next));
+      }
+    }
+  };
+
+  permute(inputArr);
+
+  return result;
+};
 ```
 
 # :memo: 중복 순열이란?
