@@ -25,12 +25,10 @@ const lengthOfLIS = function (nums) {
     let first = 0;
     let end = increasing.length - 1;
     let mid = 0;
-    console.log(i);
     while (true) {
       mid = Math.floor((first + end) / 2);
       if (first > end) {
         mid = first;
-        console.log("while2");
         break;
       }
       if (increasing[mid] < nums[i]) first = mid + 1;
