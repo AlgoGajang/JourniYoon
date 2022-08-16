@@ -24,3 +24,4 @@ let permutator = {
   u: ["a"],
 };
  */
+var maxDepth = function(s) { const regex = /[\(\)]/g; const vps = s.match(regex) if(vps === null || vps.length === 0) return 0; let countArr = [] let count = 0 for(let i=0; i<vps.length; i++) { // 열린 경우 if(vps[i] === "(") { count++} //닫힌 경우 else { count-- } countArr.push(count) } return Math.max(...countArr) }; 
