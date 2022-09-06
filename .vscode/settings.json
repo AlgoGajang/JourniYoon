@@ -19,10 +19,6 @@
     {
       "path": "/bin/python3",
       "type": "pythonEnvironment"
-    },
-    {
-      "path": "/usr/bin/python3",
-      "type": "pythonEnvironment"
     }
   ]
 }
